@@ -52,6 +52,10 @@ int main(int argc, char *argv[]) {
   }
 
   display = XOpenDisplay("");
+	if (!display) {
+		fprintf(stderr, "Error: Couldn't open connection to X11 display\n");
+		return (1);
+	}
 
   if (XScreenSaverQueryExtension(display, &event_base, &error_base)) {
     XScreenSaverQueryInfo(display, DefaultRootWindow(display), &info);
